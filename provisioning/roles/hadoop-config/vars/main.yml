@@ -1,0 +1,8 @@
+#
+# variables for user and hadoop directories
+# Author: Hikmat Dhamee
+#
+
+---
+- include : directories.yml
+- include : usrsAndGroups.yml

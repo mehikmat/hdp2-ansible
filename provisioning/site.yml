@@ -1,0 +1,12 @@
+#This is a ansible play book to deploy HDP cluster
+#Usage: $ansible-playbook site.yml
+#Author: Hikmat Dhamee
+
+---
+-hosts:all
+ roles:
+  - common
+  - hdfs
+  - hadoop-config
+  - yarn
+
