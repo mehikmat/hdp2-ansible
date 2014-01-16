@@ -7,6 +7,6 @@
  roles:
   - common
   - hdfs
-  - hadoop-config
   - yarn
+  - hadoop-config
 

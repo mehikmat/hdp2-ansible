@@ -23,7 +23,8 @@
    - health-check
    - mapred-queue-cls.xml 
   sudo: yes
-  
+
+# creating necessary directories for hadoop components
 - name: Create the data directory for the namenode datanode secondarynamenode yarn and for pid
   file: path={{ item }} owner=hdfs group=hdfs state=directory
   with_items: 
@@ -42,4 +43,3 @@
   notify: 
        - format the namenode
        - start hadoop namenode services
-       - 
