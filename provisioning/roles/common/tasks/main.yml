@@ -1,0 +1,8 @@
+# 
+# The role for common tasks
+# Author: Hikmat Dhamee
+#
+---
+- include: common.yml
+- include: misc.yml
+

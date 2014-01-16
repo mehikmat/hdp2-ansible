@@ -1,0 +1,10 @@
+#
+# Dependencies of this role
+# Author: Hikmat Dhamee
+#
+
+---
+dependencies:
+  - common
+  - hadoop
+  - yarn
