@@ -1,0 +1,24 @@
+## 
+# File: roles/hdp_common/tasks/main.yml
+# Installs the base hadoop packages
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Install the base hadoop components
+  yum: name={{ item }} state=installed
+  with_items:
+   - hadoop
+   - hadoop-hdfs
+   - hadoop-libhdf
+   - hadoop-yarn
+   - hadoop-mapreduce
+   - hadoop-client
+   - openssl
+   - snappy
+   - snappy-devel
+   - lzo
+   - lzo-devel
+   - hadoop-lzo
+   - hadoop-lzo-native
+  sudo: yes

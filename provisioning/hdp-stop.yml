@@ -1,0 +1,30 @@
+##
+# File: hdp-hosts
+# Ansible playbook to stop HDP cluster
+# USAGE:: $ ansible-playbook -i [stage|production] hdp-stop.yml
+# Author: Hikmat Dhamee
+##
+
+---
+
+# Stop HDFS Services
+- name: Stop hadoop namenode services
+  service: name=hadoop-hdfs-namenode state=stoped
+  sudo: yes
+
+- name: Stop HDFS on datanodes
+  service: name=hadoop-hdfs-datanode state=stoped
+  sudo: yes
+
+# Stop YARN Services
+- name: Stop Resource Manager
+  service: name=hadoop-yarn-resourcemanager state=stoped
+  sudo: yes
+
+- name: Stop Node Manager on datanodes
+  service: name=hadoop-yarn-nodemanager state=stoped
+  sudo: yes
+
+- name: Stop History Server
+  service: name=hadoop-mapreduce-historyserver state=stoped
+  sudo: yes

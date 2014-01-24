@@ -1,8 +1,17 @@
-# 
-# The role for common tasks
+##
+# File: roles/common/tasks/main.yml
+# Tasks to install common tools
 # Author: Hikmat Dhamee
-#
+##
+
 ---
 - include: common.yml
 - include: misc.yml
 
+# Creating users for hadoop
+- name: add hadoop users to hadoop group
+  user: name={{item}} state=present groups=hadoop
+  with_items: 
+  	- hdfs
+  	- yarn
+  	- mapred

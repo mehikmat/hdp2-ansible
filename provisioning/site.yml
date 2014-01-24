@@ -1,12 +1,37 @@
-#This is a ansible play book to deploy HDP cluster
-#Usage: $ansible-playbook site.yml
-#Author: Hikmat Dhamee
+##
+# This is a ansible play book to deploy HDP cluster
+# Usage: $ansible-playbook -i [stage|production] site.yml
+# Author: Hikmat Dhamee
+##
 
 ---
--hosts:all
- roles:
-  - common
-  - hdfs
-  - yarn
-  - hadoop-config
+- hosts: cluster
+  roles:
+   - common
+   - hdp-common
+  sudo: yes
 
+- hosts: datanodes
+  roles:
+   - hdp-datanode
+  sudo: yes
+
+- hosts: namenodes
+  roles:
+   - hdp-namenode
+  sudo: yes
+
+- hosts: historyservers
+  roles:
+   - hdp-mapreduce-historyserver
+  sudo: yes
+
+- hosts: nodemanagers
+  roles:
+   - hdp-yarn-nodemanager
+  sudo: yes
+
+- hosts: resourcemanagers
+  roles:
+   - hdp-yarn-resourcemanager
+  sudo: yes

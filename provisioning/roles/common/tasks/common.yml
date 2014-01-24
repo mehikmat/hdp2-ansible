@@ -1,7 +1,8 @@
-#
-# common tasks needed by other roles
+## 
+# File: roles/common/tasks/common.yml
+# Incommon tasks needed by other roles
 # Author: Hikmat Dhamee
-#
+##
 
 ---
 - name: Fetch HDP repo

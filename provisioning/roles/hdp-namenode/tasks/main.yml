@@ -1,0 +1,39 @@
+##
+# File: roles/hdp-namenode/tasks/main.yml 
+# Install the hadoop packages for namenode
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Install hadoop-hdfs-namenode components
+  yum: name={{ item }} state=installed
+  with_items:
+    - hadoop-hdfs-namenode
+  sudo: yes
+
+- name: Create the data directory for the namenode metadata
+  file: path={{ item }} owner={{ hadoop.HDFS_USER }} group={{ hadoop.HADOOP_GROUP }}} state=directory
+  with_items: 
+    - hadoop.DFS_NAMENODE_DIR
+
+- name: Copy the hadoop configuration files
+  template: src=roles/common/templates/hadoop_ha_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }}
+  with_items:
+   - core-site.xml
+   - hdfs-site.xml
+   - mapred-site.xml
+   - yarn-site.xml
+   - log4j.properties
+   - capacity-scheduler.xml
+   - commons-logging.properties
+   - container-executor.cfg
+   - hadoop-env.xml
+   - yarn-env.sh
+   - hadoop-metrics2.properties
+   - hadoop-metrics2.properties-GANGLIA
+   - hadoop-policy.xml
+   - health-check
+   - slaves
+   - mapred-queue-cls.xml 
+  sudo: yes
+  notify: Format the namenode

@@ -1,0 +1,33 @@
+##
+# File: production
+# Host file containing hdp host groups particulary used when deploying to production
+# Author: Hikmat Dhamee
+##
+
+localhost
+
+[namenodes]
+localhost
+
+[datanodes]
+localhost
+
+[resourcemanagers]
+localhost
+
+[historyservers]
+localhost
+
+[nodemanagers:children]
+datanodes
+
+[secondarynamenodes]
+localhost
+
+[cluster:children]
+namenodes
+datanodes
+resourcemanagers
+historyservers
+nodemanagers
+secondarynamenodes

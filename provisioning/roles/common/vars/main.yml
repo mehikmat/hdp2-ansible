@@ -1,7 +1,8 @@
-#
+##
+# File: roles/common/vars/main.yml
 # Variables used by common tasks
 # Author: Hikmat Dhamee
-#
+##
 
 ---
 jdk_version: '7u45'

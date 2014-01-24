@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-yarn-resourcemanager/meta/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+dependencies:
+  - common
+  - hdp-common

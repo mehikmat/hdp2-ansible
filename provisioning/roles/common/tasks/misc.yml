@@ -1,7 +1,9 @@
-#
+##
+# File: roles/common/tasks/misc.yml
 # Tasks to install common tools
 # Author: Hikmat Dhamee
-#
+##
+
 ---
 - name: download epel rpm
   shell: "wget --no-check-certificate http://download.fedoraproject.org/pub/epel/6/x86_64/{{ epel_filename }} -O {{ epel_rpm }} creates={{ epel_rpm }}"

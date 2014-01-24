@@ -1,0 +1,43 @@
+##
+# File: roles/hdp-datanode/tasks/main.yml 
+# Install the hadoop-datanode package
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Install hadoop-datanode components
+  yum: name={{ item }} state=installed
+  with_items:
+   - hadoop-hdfs-datanode
+  sudo: yes
+
+- name: Create the data directory for the data nodes to store the data
+  file: path={{ item }} owner=hdfs group=hdfs state=directory
+  with_items:
+   - hadoop.DFS_DATA_DIR
+
+- name: Create the data directory for the data nodes for mapreduce
+  file: path={{ item }} owner=mapred group=mapred state=directory
+  with_items: 
+   - hadoop.MAPRED_LOCAL_DIR
+
+- name: Copy the hadoop configuration files
+  template: src=roles/common/templates/hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }}
+  with_items:
+   - core-site.xml
+   - hdfs-site.xml
+   - mapred-site.xml
+   - yarn-site.xml
+   - log4j.properties
+   - capacity-scheduler.xml
+   - commons-logging.properties
+   - container-executor.cfg
+   - hadoop-env.xml
+   - yarn-env.sh
+   - hadoop-metrics2.properties
+   - hadoop-metrics2.properties-GANGLIA
+   - hadoop-policy.xml
+   - health-check
+   - slaves
+   - mapred-queue-cls.xml 
+  sudo: yes

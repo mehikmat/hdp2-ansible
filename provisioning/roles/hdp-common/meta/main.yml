@@ -1,0 +1,9 @@
+## 
+# File: roles/hdp_common/meta/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+dependencies:
+  - common

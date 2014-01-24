@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-datanode/meta/main.yml
+# Dependencies of hdp-datanode role
+# Author: Hikmat Dhamee
+##
+
+---
+dependencies:
+  - common
+  - hdp-common
