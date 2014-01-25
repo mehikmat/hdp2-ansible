@@ -12,54 +12,54 @@ hadoop:
 ###################################################################
 
 # User which will own the HDFS services.
-	HDFS_USER:hdfs 
+ HDFS_USER: hdfs 
 
 # User which will own the YARN services.
-	YARN_USER:yarn 
+ YARN_USER: yarn 
 
 # User which will own the MapReduce services.
-	MAPRED_USER:mapred 
+ MAPRED_USER: mapred 
 
 # A common group shared by services.
-	HADOOP_GROUP:hadoop 
+ HADOOP_GROUP: hadoop 
 
 ###################################################################  
 #                   Variables for <core-site.xml>                 #
 ###################################################################
 
-	FS_DEFAULT_FS_PORT : 8020
-	NAMESERVICE_ID :"localhost"
-	DFS_NAMENODE_DIR:"/hadoop/dfs/nn"
-	FS_CHECKPOINT_DIR:"/hadoop/dfs/sns"
-	HADOOP_LIBEXEC_DIR:/usr/lib/hadoop/libexec
+ FS_DEFAULT_FS_PORT : 8020
+ NAMESERVICE_ID : "localhost"
+ DFS_NAMENODE_DIR: "/hadoop/dfs/nn"
+ FS_CHECKPOINT_DIR: "/hadoop/dfs/sns"
+ HADOOP_LIBEXEC_DIR: /usr/lib/hadoop/libexec
 
 ###################################################################  
 #                  Variables for <hdfs-site_xml>                  #
 ###################################################################
 
-    DFS_PERMISSIONS_SUPERUSERGROUP:hdfs
-    DFS_REPLICATION:3;
-    DFS_DATA_DIR:"/hadoop/dfs/dn"
-    HDFS_LOG_DIR:"/var/log/hadoop/hdfs"
-    HDFS_PID_DIR:"/var/run/hadoop/hdfs"
-    HADOOP_CONF_DIR:"/etc/hadoop/conf"
-    DFS_NAMENODE_ADDR_PORT: 50010
-    DFS_NAMENODE_HTTP_ADDR_PORT: 50075
-    DFS_NAMENODE_IPC_ADDR_PORT: 50020
-    DFS_NAMENODE_HTTP_ADDR_PORT: 50070
+ DFS_PERMISSIONS_SUPERUSERGROUP: hdfs
+ DFS_REPLICATION: 3
+ DFS_DATA_DIR: "/hadoop/dfs/dn"
+ HDFS_LOG_DIR: "/var/log/hadoop/hdfs"
+ HDFS_PID_DIR: "/var/run/hadoop/hdfs"
+ HADOOP_CONF_DIR: "/etc/hadoop/conf"
+ DFS_NAMENODE_ADDR_PORT: 50010
+ DFS_NAMENODE_HTTP_ADDR_PORT: 50075
+ DFS_NAMENODE_IPC_ADDR_PORT: 50020
+ DFS_NAMENODE_HTTP_ADDR_PORT: 50070
 
 ###################################################################  
 #                  Variables for <mapred-site_xml>                #
 ###################################################################
-	MAPRED_LOG_DIR:"/var/log/hadoop/mapred"
-	MAPRED_LOCAL_DIR:"/var/log/hadoop/mapred"
-	MAPRED_PID_DIR:"/var/run/hadoop/mapred"
+ MAPRED_LOG_DIR: "/var/log/hadoop/mapred"
+ MAPRED_LOCAL_DIR: "/var/log/hadoop/mapred"
+ MAPRED_PID_DIR: "/var/run/hadoop/mapred"
 
 
 ###################################################################  
 #                  Variables for <yarn-site_xml>                #
 ###################################################################
-	YARN_LOCAL_DIR:"/hadoop/dfs/yn"
-	YARN_LOG_DIR:"/var/log/hadoop/yarn"
-	YARN_LOCAL_LOG_DIR:"/var/logs/hadoop/yarn" 
-	YARN_PID_DIR:"/var/run/hadoop/yarn"
+ YARN_LOCAL_DIR: "/hadoop/dfs/yn"
+ YARN_LOG_DIR: "/var/log/hadoop/yarn"
+ YARN_LOCAL_LOG_DIR: "/var/logs/hadoop/yarn" 
+ YARN_PID_DIR: "/var/run/hadoop/yarn"
