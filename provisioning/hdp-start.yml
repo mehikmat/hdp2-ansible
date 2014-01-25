@@ -1,5 +1,5 @@
 ##
-# File: hdp-hosts
+# File: hdp-start.yml
 # Ansible playbook to start HDP cluster
 # USAGE:: $ ansible-playbook -i [stage|production] hdp-start.yml
 # Author: Hikmat Dhamee

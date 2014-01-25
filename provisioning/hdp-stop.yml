@@ -1,5 +1,5 @@
 ##
-# File: hdp-hosts
+# File: hdp-stop.yml
 # Ansible playbook to stop HDP cluster
 # USAGE:: $ ansible-playbook -i [stage|production] hdp-stop.yml
 # Author: Hikmat Dhamee
