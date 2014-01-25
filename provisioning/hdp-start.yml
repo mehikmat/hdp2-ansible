@@ -6,25 +6,33 @@
 ##
 
 ---
-
 # Start HDFS 
-- name: start hadoop namenode services
-  service: name=hadoop-hdfs-namenode state=started
-  sudo: yes
+- hosts: namenodes
+  tasks:
+    - name: start hadoop namenode services
+      service: name=hadoop-hdfs-namenode state=started
+      sudo: yes
 
-- name: Start HDFS on datanodes
-  service: name=hadoop-hdfs-datanode state=started
-  sudo: yes
+- hosts: datanodes
+  tasks:
+    - name: Start HDFS on datanodes
+      service: name=hadoop-hdfs-datanode state=started
+      sudo: yes
 
-# Start YARN
-- name: Start Resource Manager
-  service: name=hadoop-yarn-resourcemanager state=started
-  sudo: yes
+    # Start YARN
+- hosts: resourcemanagers
+  tasks:
+    - name: Start Resource Manager
+      service: name=hadoop-yarn-resourcemanager state=started
+      sudo: yes
+- hosts: nademanagers
+  tasks:
+    - name: Start Node Manager on datanodes
+      service: name=hadoop-yarn-nodemanager state=started
+      sudo: yes
 
-- name: Start Node Manager on datanodes
-  service: name=hadoop-yarn-nodemanager state=started
-  sudo: yes
-
-- name: Start History Server
-  service: name=hadoop-mapreduce-historyserver state=started
-  sudo: yes
+- hosts: historyservers
+  tasks:
+     - name: Start History Server
+       service: name=hadoop-mapreduce-historyserver state=started
+       sudo: yes
