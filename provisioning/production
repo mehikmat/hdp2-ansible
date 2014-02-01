@@ -4,25 +4,25 @@
 # Author: Hikmat Dhamee
 ##
 
-localhost
+192.168.111.222
 
 [namenodes]
-localhost
+192.168.111.222
 
 [datanodes]
-localhost
+192.168.111.222
 
 [resourcemanagers]
-localhost
+192.168.111.222
 
 [historyservers]
-localhost
+192.168.111.222
 
 [nodemanagers:children]
 datanodes
 
 [secondarynamenodes]
-localhost
+192.168.111.222
 
 [cluster:children]
 namenodes

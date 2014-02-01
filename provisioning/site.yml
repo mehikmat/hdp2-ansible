@@ -35,3 +35,5 @@
   roles:
    - hdp-yarn-resourcemanager
   sudo: yes
+  
+- include: hdp-start.yml

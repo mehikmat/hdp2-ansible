@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.111.222"
   
   # specify provider
   config.vm.provider :virtualbox do |vb|
@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # specify vagrant provisioner
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "provisioning/site.yml"
+    ansible.inventory_path="provisioning/stage"
   end
 
   # Create a public network, which generally matched to bridged network.
