@@ -8,3 +8,7 @@
 - name: Format the namenode
   shell: creates=/usr/lib/hadoop/namenode.formatted su - hdfs -c "hdfs namenode -format" && touch /usr/lib/hadoop/namenode.formatted
   sudo: yes
+
+- name: Start hadoop namenode services
+  service: name=hadoop-hdfs-namenode state=started
+  sudo: yes

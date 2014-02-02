@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-yarn-resourcemanager/handlers/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Start Resource Manager
+  service: name=hadoop-yarn-resourcemanager state=started
+  sudo: yes

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- {{ ansible_managed }} -->
+
+<configuration>
+   
+    {% for host in groups['namenodes'] %}
+    <property>
+        <name>dfs.namenode.rpc-address.{{ site_name|lower }}.nn{{ loop.index }}</name>
+        <value>{{ host }}:8020</value>
+    </property>
+    {% endfor %}
+
+    {% for host in groups['namenodes'] %}
+    <property>
+        <name>dfs.namenode.http-address.{{ site_name|lower }}.nn{{ loop.index }}</name>
+        <value>{{host}}:50070</value>
+    </property>
+    {% endfor %}
+
+    <!-- Replication factor -->
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+        <final>true</final>
+    </property>
+
+    <property>
+        <name>dfs.blocksize</name>
+        <value>{{ hadoop.DFS_BLOCKSIZE }}</value>
+        <final>true</final>
+    </property>
+
+    <property>
+        <name>dfs.name.dir</name>
+        <value>{{hadoop.DFS_NAMENODE_DIR}}</value>
+    </property>
+
+    <property>
+        <name>dfs.data.dir</name>
+        <value>{{hadoop.DFS_DATA_DIR}}</value>
+    </property>
+    
+</configuration>

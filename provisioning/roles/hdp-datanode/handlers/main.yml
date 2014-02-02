@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-datanode/handlers/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Start HDFS on datanodes
+  service: name=hadoop-hdfs-datanode state=started
+  sudo: yes

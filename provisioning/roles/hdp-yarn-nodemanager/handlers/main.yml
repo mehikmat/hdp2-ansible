@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-yarn-nodemanager/handlers/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Start Node Manager on datanodes
+  service: name=hadoop-yarn-nodemanager state=started
+  sudo: yes

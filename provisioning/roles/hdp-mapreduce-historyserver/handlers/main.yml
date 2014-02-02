@@ -1,0 +1,10 @@
+##
+# File: roles/hdp-mapreduce-historyserver/handlers/main.yml
+# Dependencies of this role
+# Author: Hikmat Dhamee
+##
+
+---
+- name: Start History Server
+  service: name=hadoop-mapreduce-historyserver state=started
+  sudo: yes

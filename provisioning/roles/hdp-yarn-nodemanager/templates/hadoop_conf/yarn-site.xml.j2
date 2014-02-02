@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- {{ ansible_managed }} -->
+
+<configuration>
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>{{ hostvars[groups['resourcemanagers'][0]]['ansible_hostname'] }}:8031</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>{{ hostvars[groups['resourcemanagers'][0]]['ansible_hostname'] }}:8032</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>{{ hostvars[groups['resourcemanagers'][0]]['ansible_hostname'] }}:8030</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.admin.address</name>
+        <value>{{ hostvars[groups['resourcemanagers'][0]]['ansible_hostname'] }}:8033</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>{{ hostvars[groups['resourcemanagers'][0]]['ansible_hostname'] }}:8088</value>
+    </property>
+   
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce.shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>{{hadoop.YARN_LOCAL_DIR}}</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>{{hadoop.YARN_LOG_DIR}}</value>
+    </property>
+   
+    <property>
+        <name>yarn.app.mapreduce.am.staging-dir</name>
+        <value>/user</value>
+    </property>
+
+    <!-- Fair scheduling is a method of assigning resources to jobs such that all jobs get, on average, an equal
+    share of resources over time. When there is a single job running, that job uses the entire cluster. -->
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+    </property>
+</configuration>

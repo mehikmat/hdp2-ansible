@@ -12,7 +12,7 @@
   sudo: yes
 
 - name: Copy the hadoop configuration files
-  template: src=roles/common/templates/hadoop_ha_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
+  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
   with_items:
    - core-site.xml
    - hdfs-site.xml
@@ -22,12 +22,14 @@
    - capacity-scheduler.xml
    - commons-logging.properties
    - container-executor.cfg
-   - hadoop-env.xml
+   - hadoop-env.sh
    - yarn-env.sh
    - hadoop-metrics2.properties
    - hadoop-metrics2.properties-GANGLIA
    - hadoop-policy.xml
-   - health-check
+   - health_check
    - slaves
-   - mapred-queue-cls.xml 
+   - mapred-queue-acls.xml 
   sudo: yes
+  notify:
+   - Start History Server

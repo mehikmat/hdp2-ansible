@@ -1,8 +1,8 @@
-##
-# This is a ansible play book to deploy HDP cluster
-# Usage: $ansible-playbook -i [stage|production] site.yml
-# Author: Hikmat Dhamee
-##
+# ##
+# # This is a ansible play book to deploy HDP cluster
+# # Usage: $ansible-playbook -i [stage|production] site.yml
+# # Author: Hikmat Dhamee
+# ##
 
 ---
 - hosts: cluster
@@ -29,5 +29,3 @@
 - hosts: resourcemanagers
   roles:
    - hdp-yarn-resourcemanager
-
-- include: hdp-start.yml
