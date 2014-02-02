@@ -37,5 +37,5 @@
    - mapred-queue-acls.xml 
   sudo: yes
   notify: 
-   -Format the namenode
-   -Start hadoop namenode services
+   - Format the namenode
+   - Start hadoop namenode services
