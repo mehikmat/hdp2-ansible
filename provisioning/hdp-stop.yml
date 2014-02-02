@@ -19,7 +19,7 @@
       service: name=hadoop-hdfs-datanode state=stoped
       sudo: yes
 
-    # Stop YARN
+# Stop YARN
 - hosts: resourcemanagers
   tasks:
     - name: Stop Resource Manager

@@ -2,6 +2,9 @@
 # common variables for hadoop
 # Author: Hikmat Dhamee
 ##
+# To make sure that all instance communicate with each other by using external IPs
+
+iface: eth1
 
 site_name: demandcube
 

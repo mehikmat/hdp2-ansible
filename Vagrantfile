@@ -10,11 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "base"
+  config.vm.box = "CentOS-6.4"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
+
+  #config.vm.box_url = "http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
+  config.vm.box_url = "file:///home/hikmat/VBox/CentOS-6.4-x86_64-v20130731.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -23,19 +25,46 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.111.222"
+
+  #config.vm.network :private_network, ip: "192.168.50.4"
   
-  # specify provider
+  #specify provider
   config.vm.provider :virtualbox do |vb|
-    vb.name = "ae_local"
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    #vb.name = "CentOS"
+    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]
+  end
+ 
+  #I assigned the Ansible provisioner to the last VM not by chance, this step is actually very important. In Vagrant, in #a multi-vm configuration, VM machines will be started according to their declaration order. I used that knowledge to #my advantage, in order to make sure that the provisioning process will be executed only after all the VMs are up and #running.
+  #Why it is important? because otherwise Ansible will fail, since it will try to connect to some not-yet-created machines
+  
+  #hadoop master node
+  config.vm.define "master_hadoop" do |master_hadoop|
+    master_hadoop.vm.network "private_network", ip: "192.168.50.4"
+    master_hadoop.vm.hostname = "master.hadoop"
+  end
+ 
+  #hadoopo salve node1
+  config.vm.define "slave1_hadoop" do |slave1_hadoop|
+    slave1_hadoop.vm.network "private_network", ip: "192.168.50.5"
+    slave1_hadoop.vm.hostname = "slave1.hadoop"
   end
 
-  # specify vagrant provisioner
-  config.vm.provision :ansible do |ansible|
-    ansible.playbook = "provisioning/site.yml"
-    ansible.inventory_path="provisioning/stage"
+  #hadoop slave node2
+  config.vm.define "slave2_hadoop" do |slave2_hadoop|
+    slave2_hadoop.vm.network "private_network", ip: "192.168.50.6"
+    slave2_hadoop.vm.hostname = "slave2.hadoop"
+
+    #specify vagrant provisioner
+    slave2_hadoop.vm.provision :ansible do |ansible|
+      ansible.playbook = "provisioning/site.yml"
+      ansible.inventory_path="provisioning/stage"
+      ansible.host_key_checking="false"
+      ansible.verbose = "vvv"
+      ansible.sudo = true
+      ansible.sudo_user="root"
+      ansible.ask_sudo_pass=true
+    end
   end
 
   # Create a public network, which generally matched to bridged network.
@@ -45,7 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
-  # config.ssh.forward_agent = true
+  #config.ssh.forward_agent = true
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -57,13 +86,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider :virtualbox do |vb|
+  config.vm.provider :virtualbox do |vb|
   #   # Don't boot with headless mode
-  #   vb.gui = true
+     #vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
+  end
   #
   # View the documentation for the provider you're using for more
   # information on available options.

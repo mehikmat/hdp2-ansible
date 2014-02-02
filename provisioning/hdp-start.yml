@@ -19,7 +19,7 @@
       service: name=hadoop-hdfs-datanode state=started
       sudo: yes
 
-    # Start YARN
+# Start YARN
 - hosts: resourcemanagers
   tasks:
     - name: Start Resource Manager

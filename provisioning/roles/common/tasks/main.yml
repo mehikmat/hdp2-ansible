@@ -9,9 +9,9 @@
 - include: misc.yml
 
 # Creating users for hadoop
-- name: add hadoop users to hadoop group
-  user: name={{item}} state=present groups=hadoop
-  with_items: 
-   - hdfs
-   - yarn
-   - mapred
+#- name: add hadoop users to hadoop group
+#  user: name={{item}} state=present groups=hadoop
+#  with_items: 
+#   - hdfs
+#   - yarn
+#   - mapred

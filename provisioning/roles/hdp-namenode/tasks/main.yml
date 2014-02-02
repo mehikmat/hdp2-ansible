@@ -17,7 +17,7 @@
     - hadoop.DFS_NAMENODE_DIR
 
 - name: Copy the hadoop configuration files
-  template: src=roles/common/templates/hadoop_ha_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }}
+  template: src=roles/common/templates/hadoop_ha_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
   with_items:
    - core-site.xml
    - hdfs-site.xml

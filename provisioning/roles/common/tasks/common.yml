@@ -6,8 +6,8 @@
 
 ---
 - name: Fetch HDP repo
+  shell: "echo hello"
   shell: "wget -nv http://public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.0.6.0/hdp.repo -O /etc/yum.repos.d/hdp.repo creates=/etc/yum.repos.d/hdp.repo"
-  sudo: yes
 
 - name: Download JDK
   shell: "wget --quiet --no-cookies -O {{ jdk_rpm }} --header 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com;' {{ jdk_download_url }} --no-check-certificate creates={{ jdk_rpm }}"
@@ -15,6 +15,8 @@
 - name: Install JDK
   shell: "yum -y --nogpgcheck localinstall {{ jdk_rpm }} creates=/usr/java"
   sudo: yes
+- name: Install SElinux ansible module dependencies
+  yum: name=libselinux-python state=installed
 
 - name: Disable SELinux in conf file
   selinux: state=disabled

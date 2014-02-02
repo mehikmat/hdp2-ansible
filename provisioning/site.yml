@@ -9,31 +9,25 @@
   roles:
    - common
    - hdp-common
-  sudo: yes
 
 - hosts: datanodes
   roles:
    - hdp-datanode
-  sudo: yes
 
 - hosts: namenodes
   roles:
    - hdp-namenode
-  sudo: yes
 
 - hosts: historyservers
   roles:
    - hdp-mapreduce-historyserver
-  sudo: yes
 
 - hosts: nodemanagers
   roles:
    - hdp-yarn-nodemanager
-  sudo: yes
 
 - hosts: resourcemanagers
   roles:
    - hdp-yarn-resourcemanager
-  sudo: yes
-  
+
 - include: hdp-start.yml
