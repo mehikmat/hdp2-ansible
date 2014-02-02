@@ -10,7 +10,7 @@
   with_items:
    - hadoop
    - hadoop-hdfs
-   - hadoop-libhdf
+   - hadoop-libhdfs
    - hadoop-yarn
    - hadoop-mapreduce
    - hadoop-client
