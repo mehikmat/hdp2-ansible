@@ -1,0 +1,6 @@
+#host IP to Name mapping
+
+127.0.0.1 localhost
+{% for host in groups.cluster %}
+{{ hostvars[host]['ansible_' + iface].ipv4.address }}  {{ host }}
+{% endfor %}

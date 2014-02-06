@@ -1,0 +1,9 @@
+## 
+# File: roles/hdp_common/handlers/main.yml
+# Restart IPtables
+# Author: Hikmat Dhamee
+##
+
+---
+- name: restart iptables
+  service: name=iptables state=restarted
