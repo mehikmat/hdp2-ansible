@@ -13,13 +13,11 @@
 
 - name: Create the data directory for the data nodes to store the data
   file: path={{ item }} owner=hdfs group=hdfs state=directory
-  with_items:
-   - hadoop.DFS_DATA_DIR
+  with_items: hadoop.DFS_DATA_DIR
 
 - name: Create the data directory for the data nodes for mapreduce
   file: path={{ item }} owner=mapred group=mapred state=directory
-  with_items: 
-   - hadoop.MAPRED_LOCAL_DIR
+  with_items: hadoop.MAPRED_LOCAL_DIR 
 
 - name: Copy the hadoop configuration files
   template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644

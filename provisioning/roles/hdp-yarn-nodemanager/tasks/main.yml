@@ -13,14 +13,22 @@
 
 - name: create the yarn local directory
   file: path={{ item }} owner=yarn group=yarn state=directory
-  with_items:
-    - hadoop.YARN_LOCAL_DIR
+  with_items:  hadoop.YARN_LOCAL_DIR
   sudo: yes
 
 - name: create the yarn logs directory
   file: path={{ item }} owner=yarn group=yarn state=directory
-  with_items:
-    - hadoop.YARN_LOG_DIR
+  with_items: hadoop.YARN_LOG_DIR
+  sudo: yes
+
+- name: create the yarn logs directory
+  file: path={{ item }} owner=yarn group=yarn state=directory
+  with_items: hadoop.YARN_PID_DIR
+  sudo: yes
+
+- name: create the yarn logs directory
+  file: path={{ item }} owner=yarn group=yarn state=directory
+  with_items: hadoop.YARN_LOCAL_LOG_DIR
   sudo: yes
 
 - name: Copy the hadoop configuration files

@@ -2,8 +2,8 @@
 # common variables for hadoop
 # Author: Hikmat Dhamee
 ##
-# To make sure that all instance communicate with each other by using external IPs
 
+# To make sure that all instances communicate with each other by using external IPs
 iface: eth1
 
 site_name: demandcube
@@ -47,9 +47,9 @@ hadoop:
  HDFS_LOG_DIR: "/var/log/hadoop/hdfs"
  HDFS_PID_DIR: "/var/run/hadoop/hdfs"
  HADOOP_CONF_DIR: "/etc/hadoop/conf"
- DFS_NAMENODE_ADDR_PORT: 50010
- DFS_NAMENODE_HTTP_ADDR_PORT: "50075"
- DFS_NAMENODE_IPC_ADDR_PORT: "50020"
+ DFS_DATANODE_ADDR_PORT: 50010
+ DFS_DATANODE_HTTP_ADDR_PORT: "50075"
+ DFS_DATANODE_IPC_ADDR_PORT: "50020"
  DFS_NAMENODE_HTTP_ADDR_PORT: "50070"
 
 ###################################################################  

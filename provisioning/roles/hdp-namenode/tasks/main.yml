@@ -13,9 +13,16 @@
 
 - name: Create the data directory for the namenode metadata
   file: path={{ item }} owner={{ hadoop.HDFS_USER }} group=hdfs state=directory
-  with_items: 
-    - hadoop.DFS_NAMENODE_DIR
+  with_items: hadoop.DFS_NAMENODE_DIR
 
+- name: Create the log directory for the namenode metadata
+  file: path={{ item }} owner={{ hadoop.HDFS_USER }} group=hdfs state=directory
+  with_items: hadoop.HDFS_LOG_DIR
+
+- name: Create the pid directory for the namenode metadata
+  file: path={{ item }} owner={{ hadoop.HDFS_USER }} group=hdfs state=directory
+  with_items: hadoop.HDFS_PID_DIR
+  
 - name: Copy the hadoop configuration files
   template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
   with_items:

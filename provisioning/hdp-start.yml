@@ -8,6 +8,7 @@
 ---
 # Start HDFS 
 - hosts: namenodes
+  user: hdfs
   tasks:
     - name: start hadoop namenode services
       service: name=hadoop-hdfs-namenode state=started

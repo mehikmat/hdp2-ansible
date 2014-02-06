@@ -22,3 +22,10 @@
    - hadoop-lzo
    - hadoop-lzo-native
   sudo: yes
+  
+- name: Create the hosts file for all machines
+  template: src=etc/hosts.j2 dest=/etc/hosts
+  
+- name: Create the iptables file for all machines
+  template: src=iptables.j2 dest=/etc/sysconfig/iptables
+  notify: restart iptables

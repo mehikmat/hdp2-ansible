@@ -41,20 +41,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #hadoop master node
   config.vm.define "master_hadoop" do |master_hadoop|
     master_hadoop.vm.network "private_network", ip: "192.168.50.4"
-    master_hadoop.vm.hostname = "master.hadoop"
+    master_hadoop.vm.hostname = "master-hadoop"
   end
  
   #hadoopo salve node1
   config.vm.define "slave1_hadoop" do |slave1_hadoop|
     slave1_hadoop.vm.network "private_network", ip: "192.168.50.5"
-    slave1_hadoop.vm.hostname = "slave1.hadoop"
+    slave1_hadoop.vm.hostname = "slave1-hadoop"
   end
 
   #hadoop slave node2
   config.vm.define "slave2_hadoop" do |slave2_hadoop|
     slave2_hadoop.vm.network "private_network", ip: "192.168.50.6"
-    slave2_hadoop.vm.hostname = "slave2.hadoop"
-
+    slave2_hadoop.vm.hostname = "slave2-hadoop"
     #specify vagrant provisioner
     slave2_hadoop.vm.provision :ansible do |ansible|
       ansible.playbook = "provisioning/site.yml"
