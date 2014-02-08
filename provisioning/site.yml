@@ -10,17 +10,13 @@
    - common
    - hdp-common
 
-- hosts: datanodes
-  roles:
-   - hdp-datanode
-
 - hosts: namenodes
   roles:
    - hdp-namenode
 
-- hosts: historyservers
+- hosts: datanodes
   roles:
-   - hdp-mapreduce-historyserver
+   - hdp-datanode
 
 - hosts: nodemanagers
   roles:
@@ -29,3 +25,7 @@
 - hosts: resourcemanagers
   roles:
    - hdp-yarn-resourcemanager
+
+- hosts: historyservers
+  roles:
+   - hdp-mapreduce-historyserver

@@ -44,8 +44,8 @@ hadoop:
  DFS_REPLICATION: "3"
  DFS_BLOCKSIZE: "64"
  DFS_DATA_DIR: "/hadoop/dfs/dn"
- HDFS_LOG_DIR: "/var/log/hadoop/hdfs"
- HDFS_PID_DIR: "/var/run/hadoop/hdfs"
+ HDFS_LOG_DIR: "/var/log/hadoop"
+ HDFS_PID_DIR: "/var/run/hadoop"
  HADOOP_CONF_DIR: "/etc/hadoop/conf"
  DFS_DATANODE_ADDR_PORT: 50010
  DFS_DATANODE_HTTP_ADDR_PORT: "50075"

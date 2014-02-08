@@ -1,2 +1,3 @@
-{% for host in groups['datanodes'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}
+{% for host in groups['datanodes'] %}
+{{ host }}
 {% endfor %}

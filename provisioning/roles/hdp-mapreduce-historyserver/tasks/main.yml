@@ -11,16 +11,20 @@
    - hadoop-mapreduce-historyserver
   sudo: yes
 
-- name: Create the data directory for the data nodes to store the data
+- name: Create the mapred pid directory
   file: path={{ item }} owner=mapred group=mapred state=directory
   with_items: hadoop.MAPRED_PID_DIR
 
-- name: Create the data directory for the data nodes to store the data
+- name: Create the mapred log directory
   file: path={{ item }} owner=mapred group=mapred state=directory
   with_items: hadoop.MAPRED_LOG_DIR
 
+#- name: Create the mapred temp directory in hdfs
+#  file: path={{ item }} owner=mapred group=mapred state=directory
+#  with_items: hdfs://master-hadoop:8020/tmp
+
 - name: Copy the hadoop configuration files
-  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
+  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=0644
   with_items:
    - core-site.xml
    - hdfs-site.xml

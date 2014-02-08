@@ -22,9 +22,9 @@
 - name: Create the pid directory for the namenode metadata
   file: path={{ item }} owner={{ hadoop.HDFS_USER }} group=hdfs state=directory
   with_items: hadoop.HDFS_PID_DIR
-  
+
 - name: Copy the hadoop configuration files
-  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
+  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=0644
   with_items:
    - core-site.xml
    - hdfs-site.xml

@@ -19,6 +19,7 @@ master-hadoop ansible_ssh_host=192.168.50.4
 
 [nodemanagers:children]
 datanodes
+namenodes
 
 [secondarynamenodes]
 master-hadoop ansible_ssh_host=192.168.50.4

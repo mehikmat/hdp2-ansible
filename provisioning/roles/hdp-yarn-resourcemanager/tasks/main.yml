@@ -12,7 +12,7 @@
   sudo: yes
 
 - name: Copy the hadoop configuration files
-  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
+  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=0644
   with_items:
    - core-site.xml
    - hdfs-site.xml

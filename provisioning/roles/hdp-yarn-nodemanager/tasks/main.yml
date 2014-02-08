@@ -21,18 +21,18 @@
   with_items: hadoop.YARN_LOG_DIR
   sudo: yes
 
-- name: create the yarn logs directory
+- name: create the yarn pid directory
   file: path={{ item }} owner=yarn group=yarn state=directory
   with_items: hadoop.YARN_PID_DIR
   sudo: yes
 
-- name: create the yarn logs directory
+- name: create the yarn local logs directory
   file: path={{ item }} owner=yarn group=yarn state=directory
   with_items: hadoop.YARN_LOCAL_LOG_DIR
   sudo: yes
 
 - name: Copy the hadoop configuration files
-  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=644
+  template: src=hadoop_conf/{{ item }}.j2 dest=/etc/hadoop/conf/{{ item }} mode=0644
   with_items:
    - core-site.xml
    - hdfs-site.xml
