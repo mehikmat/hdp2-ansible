@@ -46,3 +46,26 @@
   notify: 
    - Format the namenode
    - Start hadoop namenode services
+
+- name: Create HDFS /tmp  /var  and  /user dirs
+  action: >
+      command sudo -u hdfs hadoop fs -mkdir -p
+      /tmp
+      /tmp/hadoop-yarn
+      /tmp/hadoop-yarn/staging
+      /tmp/hadoop-yarn/staging/history
+      /var
+      /var/log
+      /var/log/hadoop-yarn
+      /var/log/hadoop-yarn/apps
+      /user/history
+    
+- name: Set HDFS permissions
+  action: |
+      command sudo -u hdfs -- /bin/sh -c '
+      hadoop fs -chmod -R 1777 /tmp
+      hadoop fs -chown -R yarn /tmp/hadoop-yarn
+      hadoop fs -chmod -R 755 /var
+      hadoop fs -chown -R yarn:mapred /var/log/hadoop-yarn
+      hadoop fs -chmod -R 755 /user
+      hadoop fs -chmod 1777 /user/history'
