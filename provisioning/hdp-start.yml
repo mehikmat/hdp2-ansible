@@ -8,7 +8,10 @@
 ---
 # Start HDFS 
 - hosts: namenodes
-  user: hdfs
+  sudo: True
+  user: vagrant
+  pass: vagrant
+  ask_pass: True
   tasks:
     - name: start hadoop namenode services
       service: name=hadoop-hdfs-namenode state=started
@@ -34,6 +37,6 @@
 
 - hosts: historyservers
   tasks:
-     - name: Start History Server
-       service: name=hadoop-mapreduce-historyserver state=started
-       sudo: yes
+    - name: Start History Server
+      service: name=hadoop-mapreduce-historyserver state=started
+      sudo: yes
