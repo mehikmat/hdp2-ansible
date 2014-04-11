@@ -1,0 +1,11 @@
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://0.0.0.0: {{ FS_DEFAULT_FS_PORT }}</value>
+    </property>
+    <property>
+      <name>dfs.namenode.checkpoint.dir</name>
+      <value>{{ FS_CHECKPOINT_DIR }}</value>
+    </property>
+</configuration>

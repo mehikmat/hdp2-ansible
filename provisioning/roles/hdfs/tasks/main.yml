@@ -1,0 +1,26 @@
+# 
+# Install the hadoop packages
+# Author: Hikmat Dhamee
+#
+
+---
+- name: Install hadoop components
+  yum: name={{ item }} state=installed
+  with_items:
+   - hadoop
+   - hadoop-hdfs
+   - hadoop-libhdf
+   - hadoop-yarn
+   - hadoop-mapreduce
+   - hadoop-client
+   - openssl
+   - snappy
+   - snappy-devel
+   - lzo
+   - lzo-devel
+   - hadoop-lzo
+   - hadoop-lzo-native
+  sudo: yes
+
+
+
